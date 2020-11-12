@@ -19,7 +19,7 @@ void main() {
     };
     runApp(ConfigWrapper(
       child: FlutterReduxApp(),
-      config: EnvConfig.fromJson(config),
+      config: EnvConfig.fromJson(config),/// 'env/prod.dart'
     ));
   }, onError: (Object obj, StackTrace stack) {
     ///do not thing
