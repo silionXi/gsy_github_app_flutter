@@ -10,6 +10,7 @@ class ConfigWrapper extends StatelessWidget {
    * 子类会默认调用（非继承）父类的无参构造（只有可选参数，按无参处理？），如果父类申明了带参构造，需要通过:super指定调用
    * 构造函数重定向: ConfigWrapper.withChild(EnvConfig config) : this(config: config, child: MaterialApp());
    * 工厂构造函数：实现构造函数时使用factory关键字（可以返回对象的构造函数）
+   * 空参：ConfigWrapper.empty()
    */
   ConfigWrapper({Key key, this.config, this.child});
 
