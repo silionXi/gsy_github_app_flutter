@@ -1,0 +1,11 @@
+<network-security-config>
+    <!-- targetSdkVersion升级到28后，Android P以上系统默认不支持非加密的明文流量的http网络请求，设置true支持 -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- 信任系统预装 CA 证书 -->
+            <certificates src="system" />
+            <!-- debug下信任用户添加的 CA 证书，Charles 和 Fiddler 抓包工具安装的证书属于此类 -->
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
