@@ -21,6 +21,11 @@ class DynamicPage extends StatefulWidget {
   DynamicPageState createState() => DynamicPageState();
 }
 
+/**
+ * 页面点击切换时，StatefulWidget 的子页面每次都会重新调用initState。
+ * 每个 Tab 对应的 StatefulWidget 的 State ，通过with AutomaticKeepAliveClientMixin ，
+ * 然后重写 @override bool get wantKeepAlive => true; ，就可以实不重新构建的效果了
+ */
 class DynamicPageState extends State<DynamicPage>
     with AutomaticKeepAliveClientMixin<DynamicPage>, WidgetsBindingObserver {
   final DynamicBloc dynamicBloc = new DynamicBloc();
@@ -28,6 +33,12 @@ class DynamicPageState extends State<DynamicPage>
   ///控制列表滚动和监听
   final ScrollController scrollController = new ScrollController();
 
+  /**
+   * 可以利用 GlobalKey<RefreshIndicatorState> 对外提供 RefreshIndicator 的 RefreshIndicatorState，
+   * 这样外部就 可以通过 GlobalKey 调用 globalKey.currentState.show();
+   * 主动显示刷新状态并触发 onRefresh
+   * 这里是外部，内部创建 RefreshIndicator 参考：GSYPullLoadWidget
+   */
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 

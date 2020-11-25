@@ -32,7 +32,7 @@ class GSYLocalizations {
   }
 
   ///通过 Localizations 加载当前的 GSYLocalizations
-  ///获取对应的 GSYStringBase
+  ///获取对应的 GSYStringBase - 国际化？
   static GSYStringBase i18n(BuildContext context) {
     return (Localizations.of(context, GSYLocalizations) as GSYLocalizations)
         .currentLocalized;

@@ -26,6 +26,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  /**
+   * 在 TabBar  页面中，一般还会出现：父页面需要控制 PageView 中子页的需求，这时候就需要用到GlobalKey了，
+   * 比如 GlobalKey<DynamicPageState> dynamicKey = new GlobalKey();
+   * 通过 dynamicKey.currentState 对象，你就可以调用到 DynamicPageState 中的公开方法，
+   * 这里需要注意 GlobalKey 实例需要全局唯一
+   */
   final GlobalKey<DynamicPageState> dynamicKey = new GlobalKey();
   final GlobalKey<TrendPageState> trendKey = new GlobalKey();
   final GlobalKey<MyPageState> myKey = new GlobalKey();
@@ -69,7 +75,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: new GSYTabBarWidget(
         drawer: new HomeDrawer(),
-        type: TabType.bottom,
+        type: TabType.top,
         tabItems: tabs,
         tabViews: [
           new DynamicPage(key: dynamicKey),

@@ -57,9 +57,31 @@ class NavigatorUtils {
 
   ///切换无参数页面
   static pushNamed(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
+    Navigator.pushNamed(context, routeName).then((value) => null);
   }
 
+  /**
+   * Flutter 中的页面跳转是通过 Navigator 实现的，且会返回一个 Future
+   * 这个Future 的作用是在页面返回时被调用的。
+   * 也就是你可以通过 Navigator 的 pop 时返回参数，
+   * 之后在 Future 中可以的监听中处理页面的返回结果。
+   *
+   * 不带参数的路由表跳转：gotoPhotoViewPage(BuildContext context, String url)
+   * Navigator.pushNamed(context, routeName);
+   *
+   * 跳转新页面并且替换，比如登录页跳转主页：goHome(BuildContext context)
+   * Navigator.pushReplacementNamed(context, routeName);
+   *
+   * 跳转到新的路由，并且关闭给定路由的之前的所有页面：
+   * Navigator.pushNamedAndRemoveUntil(context, '/calendar', ModalRoute.withName('/'));
+   *
+   * 带参数的路由跳转，并且监听返回：
+   * Navigator.push(context, new MaterialPageRoute(builder: (context) => new NotifyPage())).then((res) {
+   *     ///获取返回处理
+   * });
+   *
+   * 新版本开始可以给 pushNamed 设置 arguments 参数，然后在新页面通过 ModalRoute.of(context).settings.arguments 获取。
+   */
   ///主页
   static goHome(BuildContext context) {
     Navigator.pushReplacementNamed(context, HomePage.sName);

@@ -16,6 +16,11 @@ class HttpManager {
   static const CONTENT_TYPE_JSON = "application/json";
   static const CONTENT_TYPE_FORM = "application/x-www-form-urlencoded";
 
+  /**
+   * 当前 Flutter 网络请求封装中，国内最受欢迎的就是 Dio 了，
+   * Dio 封装了网络请求中的数据转换、拦截器、请求返回等
+   */
+  ///创建网络请求对象，主要最好吧 dio 实例全局单里
   Dio _dio = new Dio(); // 使用默认配置
 
   final TokenInterceptors _tokenInterceptors = new TokenInterceptors();
@@ -71,9 +76,12 @@ class HttpManager {
 
     Response response;
     try {
+      ///发起请求
+      ///url地址，请求数据，一般为Map或者FormData
+      ///options 额外配置，可以配置超时，头部，请求类型，数据响应类型，host等
       response = await _dio.request(url, data: params, options: option);
     } on DioError catch (e) {
-      return resultError(e);
+      return resultError(e); ///http错误是通过 DioError 的catch返回的一个对象
     }
     if (response.data is DioError) {
       return resultError(response.data);

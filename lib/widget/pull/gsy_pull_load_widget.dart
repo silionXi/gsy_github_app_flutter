@@ -105,7 +105,7 @@ class _GSYPullLoadWidgetState extends State<GSYPullLoadWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return new RefreshIndicator(
+    return new RefreshIndicator(//Flutter 中 为我们提供了 RefreshIndicator 作为内置下拉刷新控件
       ///GlobalKey，用户外部获取RefreshIndicator的State，做显示刷新
       key: widget.refreshKey,
 

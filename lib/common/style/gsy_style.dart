@@ -217,6 +217,14 @@ class GSYICons {
   static const String DEFAULT_REMOTE_PIC =
       'https://raw.githubusercontent.com/CarGuo/gsy_github_app_flutter/master/static/images/logo.png';
 
+  /**
+   * Flutter 中默认内置的 Icons 类就提供了丰富的图标，直接通过 Icons 对象即可使用
+   * 矢量图标对笔者是必不可少的，比起一般的 png 图片文件，
+   * 矢量图标在开发过程中：可以轻松定义颜色，并且任意调整大小不模糊。
+   * 矢量图标库是引入 ttf 字体库文件实现，
+   * 通过在 pubspec.yaml 中添加字体库支持：wxcIconFont，
+   * 然后在 Flutter 中通过 Icon 控件，加载对应的 IconData 显示即可。
+   */
   static const IconData HOME =
       const IconData(0xe624, fontFamily: GSYICons.FONT_FAMILY);
   static const IconData MORE =
