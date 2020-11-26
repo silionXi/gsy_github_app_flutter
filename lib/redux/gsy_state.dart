@@ -35,6 +35,15 @@ class GSYState {
   GSYState({this.userInfo, this.themeData, this.locale, this.login});
 }
 
+/**
+ * Reducer 可以跨控件管理、同步State
+ * 比如把用户信息存储在 redux 的 store 中，
+ * 好处在于: 比如某个页面修改了当前用户信息，所有绑定的该 State 的控件将由 Redux 自动同步修改，State 可以跨页面共享
+ *
+ * action 用于定义一个数据变化的请求。
+ * reducer 用于根据 action 产生新状态
+ * store 用于存储和管理 state，监听 action，将 action 自动分配给 reducer 并根据 reducer 的执行结果更新 state。
+ */
 ///创建 Reducer
 ///源码中 Reducer 是一个方法 typedef State Reducer<State>(State state, dynamic action);
 ///我们自定义了 appReducer 用于创建 store

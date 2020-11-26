@@ -33,7 +33,7 @@ class _FlutterReduxAppState extends State<FlutterReduxApp>
   /// 创建Store，引用 GSYState 中的 appReducer 实现 Reducer 方法
   /// initialState 初始化 State
   final store = new Store<GSYState>(
-    appReducer,
+    appReducer,//源码中 Reducer 是一个方法 typedef State Reducer<State>(State state, dynamic action);
 
     ///拦截器
     middleware: middleware,
